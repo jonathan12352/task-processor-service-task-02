@@ -38,7 +38,7 @@ namespace TaskProcessorService
                 option.UseInMemoryDatabase("Task");
             });
 
-            //services.AddHostedService<TaskConsumer>();
+            services.AddHostedService<TaskConsumer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

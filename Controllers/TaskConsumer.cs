@@ -8,6 +8,7 @@ using System.Threading;
 using RabbitMQ.Client.Events;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TaskProcessorService.Controllers
 {
@@ -18,9 +19,9 @@ namespace TaskProcessorService.Controllers
 
         private TaskContext _context;
 
-        public TaskConsumer(TaskContext context)
+        public TaskConsumer(IServiceProvider serviceProvider)
         {
-            _context = context;
+            _context = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<TaskContext>();
             InitRabbitMQ();
         }
 
