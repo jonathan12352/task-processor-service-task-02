@@ -14,7 +14,12 @@ spec:
     spec:
       containers:
       - name: task-processor-service
-        image: jonathan12352/msassessmenttaskprocessorservice
+        image: jonathan12352/msassessmenttaskprocessorservice:1.0.0
+        env: 
+         - name: RABBITMQ_HOST
+           value: "rabbitmq"
+         - name: RABBITMQ_PORT
+           value: "5672"
         ports:
         - containerPort: 5000
         resources:
